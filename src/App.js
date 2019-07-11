@@ -4,7 +4,7 @@ import Jumbotron from './components/Jumbotron'
 import Container from './components/Container'
 import Card from './components/Card'
 import characters from "./characters.json";
-import './App.css';
+import './styles/App.css';
 
 class App extends React.Component {
   // Setting this.state.characters to the characters json array
