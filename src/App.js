@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from './components/Navbar'
 import Jumbotron from './components/Jumbotron'
 import Container from './components/Container'
@@ -6,17 +6,22 @@ import Card from './components/Card'
 import characters from "./characters.json";
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
   // Setting this.state.characters to the characters json array
   state = {
     characters
   };
 
-  render(){
+  render () {
     return (
       <div>
         <Navbar/>
-        <Jumbotron/>
+        <Jumbotron>
+          <Container>
+
+          </Container>
+        </Jumbotron>
+        
         <Container>
         {this.state.characters.map(character => (
           <Card
@@ -29,9 +34,9 @@ class App extends Component {
         </Container>
         
       </div>
-    );
+    )
   }
-};
+}
 
 
 export default App;
