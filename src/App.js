@@ -70,23 +70,24 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <Navbar/>
-          <Jumbotron
-          score={this.state.score}
-          highScore={this.state.highscore}
-          status={this.state.status}
-          />
+        <Navbar
+        score={this.state.score}
+        highScore={this.state.highscore}
+        status={this.state.status}
+        />
+          <Jumbotron/>
           <Container>
-        
-            {this.state.characters.map(character =>(
-             <Card
-              cardClicked={this.cardClicked}
-              id={character.id}
-              key={character.id}
-              name={character.name}
-              image={character.image}
-              />
-            ))}
+            <div className="row">
+              {this.state.characters.map(character =>(
+              <Card
+                cardClicked={this.cardClicked}
+                id={character.id}
+                key={character.id}
+                name={character.name}
+                image={character.image}
+                />
+              ))}
+            </div>
           </Container>
         
       </div>

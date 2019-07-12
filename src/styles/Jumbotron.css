@@ -1,3 +1,10 @@
-.display-4{
+.container{
     text-align: center;
+}
+
+.jumbotron{
+    padding-top: 180px;
+    padding-bottom: 140px;
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/footer_lodyas.png");
+    color: white;
 }

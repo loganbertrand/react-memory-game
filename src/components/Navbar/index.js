@@ -1,25 +1,15 @@
 import React from "react";
+import "../../styles/Navbar.css"
 
-const styles = {
-  card: {
-    margin: 20,
-    background: "#e8eaf6"
-  },
-  heading: {
-    background: "#9a74db",
-    minHeight: 50,
-    lineHeight: 3.5,
-    fontSize: "1.2rem",
-    color: "white",
-    padding: "0 20px"
-  }
-};
-
-function Navbar() {
+function Navbar(props) {
   return (
-    <div style={styles.card}>
-      <div style={styles.heading}>Home</div>
-    </div>
+    <nav className="navbar">
+      
+       <a className = "navbar-brand" href="/">Memory Game</a>
+        <span className = "navbar-text">{props.status}</span>
+        <span className = "navbar-text">Score: {props.score} | High Score: {props.highScore}</span>
+      
+    </nav>
   );
 }
 

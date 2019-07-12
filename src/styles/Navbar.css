@@ -1,0 +1,15 @@
+.navbar{
+    text-decoration: none;
+    background: #044389;
+    min-height: 70px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    color: white;
+    font-weight: 600;
+}
+
+.navbar a{
+    color: inherit;
+    font-weight: 900;
+}
