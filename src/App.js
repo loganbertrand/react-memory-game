@@ -5,7 +5,6 @@ import Container from './components/Container'
 import Card from './components/Card'
 import characters from "./characters.json";
 import './styles/App.css';
-import Button from "./components/Button";
 
 class App extends React.Component {
   // Setting this.state.characters to the characters json array
@@ -14,22 +13,29 @@ class App extends React.Component {
 		score: 0,
 		highscore: 0,
     selected: [],
+    status: ""
   };
 
   cardClicked = event => {
     const currentCard = event.target.id
     console.log(currentCard)
 
-    if (this.state.selected.includes(currentCard)===true){
+    const selectedArr = this.state.selected
+    const alreadyClicked = selectedArr.indexOf(currentCard);
+
+    if (alreadyClicked >= 0){
       this.handleShuffleArr(this.state.characters);
       console.log('already been clicked')
+      this.resetGame()
     }else{
       this.handleShuffleArr(this.state.characters);
       this.setState({
-        selected: this.state.selected.push(currentCard)
+        selected: this.state.selected.concat(currentCard),
+        score: this.state.score + 1,
+        status: "Correct! Keep Going, You Got This!"
       })
       console.log(this.state.selected)
-      console.log(this.state.selected.indexOf(currentCard))
+      console.log(this.state.score)
     }
     
 
@@ -49,20 +55,30 @@ class App extends React.Component {
   }
 
   resetGame = () => {
-
-
+    if(this.state.score > this.state.highscore){
+      this.setState({
+        highscore: this.state.score
+      })
+    }
+    this.setState({
+      selected: [],
+      score: 0,
+      status:"Game Over! Try Again!"
+    })
   }
   
   render () {
     return (
       <div>
         <Navbar/>
-        <Jumbotron>
-        </Jumbotron>
+          <Jumbotron
+          score={this.state.score}
+          highScore={this.state.highscore}
+          status={this.state.status}
+          />
+          <Container>
         
-        <Container>
-        
-        {this.state.characters.map(character =>(
+            {this.state.characters.map(character =>(
              <Card
               cardClicked={this.cardClicked}
               id={character.id}
@@ -70,9 +86,8 @@ class App extends React.Component {
               name={character.name}
               image={character.image}
               />
-        ))}
-         <Button onClick={() => this.handleShuffleArr(this.state.cards)}>shuffle</Button>
-        </Container>
+            ))}
+          </Container>
         
       </div>
     )
